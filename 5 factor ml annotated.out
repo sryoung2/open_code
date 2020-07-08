@@ -1,0 +1,1035 @@
+Mplus VERSION 7.4
+MUTHEN & MUTHEN
+07/08/2020  11:07 AM
+
+INPUT INSTRUCTIONS
+
+  DATA:
+
+  FILE IS MPLUSWAISICAR.csv;
+  FORMAT IS FREE;
+  TYPE IS INDIVIDUAL;
+
+
+  VARIABLE:
+
+  NAMES ARE 	AGE	 CLINICAL FEMALE IPAD
+  BD_RAW	BD_NTB	BLOCKS	BD_NTB_SS	SI_RAW	
+  SIMILAR	DS_RAW	DS_SS	DS_F_RAW	FORWARD	DS_B_RAW	
+  BACKWARD	DS_S_RAW	SEQUENCE	MR_RAW	MATRIX	SS_RAW	SYMBOL	
+  VC_RAW	VOCAB	VP_RAW	VISPUZ	AR_RAW	ARITHMET	IN_RAW	INFO	CD_RAW	CODING	
+  VCI	PRI	WMI	PSI	FSIQ	GAI	LN60	MR60	VR60	R3D60	TOTAL60	
+  LTRNUM IMATRIX VRBREAS ROTATE	TOTAL16	
+  LN_01	LN_03	LN_05	LN_06	LN_07	LN_33	LN_34	LN_35	
+  LN_58	VR_04	VR_09	VR_11	VR_13	       VR_14	VR_16	VR_17	VR_18	
+  VR_19	VR_23	VR_26	       VR_31	VR_32	VR_36	VR_39	       VR_42	MR_43	
+  MR_44	MR_45	MR_46	MR_47	MR_48	       MR_50	MR_53	MR_54	MR_55	MR_56	R3D_01
+  R3D_02	R3D_03	R3D_04	R3D_05	R3D_06	R3D_07	R3D_08	       R3D_09	R3D_10	R3D_11	R3D_12
+  R3D_13	R3D_14	R3D_15	       R3D_16	R3D_17	R3D_18	R3D_19	R3D_20	R3D_21	R3D_22
+   R3D_23	R3D_24;
+
+
+  USEVARIABLES ARE	
+  SIMILAR INFO VOCAB
+  MATRIX ARITHMET
+  BLOCKS VISPUZ
+  CODING SYMBOL
+  FORWARD BACKWARD SEQUENCE
+  LTRNUM IMATRIX VRBREAS ROTATE;
+
+
+   MISSING ARE ALL (-999);
+
+
+    ANALYSIS:
+
+    COVERAGE=.001;
+    STITERATIONS=5000000;
+    H1ITERATIONS=5000000;
+    ITERATIONS=5000000;
+    ESTIMATOR=ML;
+
+
+  !5 factor model with correlated observed ICAR16 subtest scores
+
+  MODEL:
+  GC BY SIMILAR INFO VOCAB;
+  GF BY MATRIX ARITHMET;
+  GV BY BLOCKS VISPUZ;
+  GS BY CODING SYMBOL;
+  GSM BY FORWARD BACKWARD SEQUENCE;
+  LTRNUM WITH GC GF GV GS GSM IMATRIX VRBREAS ROTATE;
+  IMATRIX WITH GC GF GV GS GSM VRBREAS ROTATE;
+  VRBREAS WITH GC GF GV GS GSM ROTATE;
+  ROTATE  WITH GC GF GV GS GSM;
+
+
+
+
+  OUTPUT:
+
+  STANDARDIZED PATTERNS SAMPSTAT MODINDICES;
+
+
+
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                          97
+
+Number of dependent variables                                   16
+Number of independent variables                                  0
+Number of continuous latent variables                            5
+
+Observed dependent variables
+
+  Continuous
+   SIMILAR     INFO        VOCAB       MATRIX      ARITHMET    BLOCKS
+   VISPUZ      CODING      SYMBOL      FORWARD     BACKWARD    SEQUENCE
+   LTRNUM      IMATRIX     VRBREAS     ROTATE
+
+Continuous latent variables
+   GC          GF          GV          GS          GSM
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                               5000000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+Maximum number of iterations for H1                        5000000
+Convergence criterion for H1                             0.100D-03
+
+Input data file(s)
+  MPLUSWAISICAR.csv
+
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns             1
+
+
+SUMMARY OF MISSING DATA PATTERNS
+
+
+     MISSING DATA PATTERNS (x = not missing)
+
+           1
+ SIMILAR   x
+ INFO      x
+ VOCAB     x
+ MATRIX    x
+ ARITHMET  x
+ BLOCKS    x
+ VISPUZ    x
+ CODING    x
+ SYMBOL    x
+ FORWARD   x
+ BACKWARD  x
+ SEQUENCE  x
+ LTRNUM    x
+ IMATRIX   x
+ VRBREAS   x
+ ROTATE    x
+
+
+     MISSING DATA PATTERN FREQUENCIES
+
+    Pattern   Frequency
+          1          97
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.001
+
+
+     PROPORTION OF DATA PRESENT
+
+
+           Covariance Coverage
+              SIMILAR       INFO          VOCAB         MATRIX        ARITHMET
+              ________      ________      ________      ________      ________
+ SIMILAR        1.000
+ INFO           1.000         1.000
+ VOCAB          1.000         1.000         1.000
+ MATRIX         1.000         1.000         1.000         1.000
+ ARITHMET       1.000         1.000         1.000         1.000         1.000
+ BLOCKS         1.000         1.000         1.000         1.000         1.000
+ VISPUZ         1.000         1.000         1.000         1.000         1.000
+ CODING         1.000         1.000         1.000         1.000         1.000
+ SYMBOL         1.000         1.000         1.000         1.000         1.000
+ FORWARD        1.000         1.000         1.000         1.000         1.000
+ BACKWARD       1.000         1.000         1.000         1.000         1.000
+ SEQUENCE       1.000         1.000         1.000         1.000         1.000
+ LTRNUM         1.000         1.000         1.000         1.000         1.000
+ IMATRIX        1.000         1.000         1.000         1.000         1.000
+ VRBREAS        1.000         1.000         1.000         1.000         1.000
+ ROTATE         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              BLOCKS        VISPUZ        CODING        SYMBOL        FORWARD
+              ________      ________      ________      ________      ________
+ BLOCKS         1.000
+ VISPUZ         1.000         1.000
+ CODING         1.000         1.000         1.000
+ SYMBOL         1.000         1.000         1.000         1.000
+ FORWARD        1.000         1.000         1.000         1.000         1.000
+ BACKWARD       1.000         1.000         1.000         1.000         1.000
+ SEQUENCE       1.000         1.000         1.000         1.000         1.000
+ LTRNUM         1.000         1.000         1.000         1.000         1.000
+ IMATRIX        1.000         1.000         1.000         1.000         1.000
+ VRBREAS        1.000         1.000         1.000         1.000         1.000
+ ROTATE         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              BACKWARD      SEQUENCE      LTRNUM        IMATRIX       VRBREAS
+              ________      ________      ________      ________      ________
+ BACKWARD       1.000
+ SEQUENCE       1.000         1.000
+ LTRNUM         1.000         1.000         1.000
+ IMATRIX        1.000         1.000         1.000         1.000
+ VRBREAS        1.000         1.000         1.000         1.000         1.000
+ ROTATE         1.000         1.000         1.000         1.000         1.000
+
+
+           Covariance Coverage
+              ROTATE
+              ________
+ ROTATE         1.000
+
+
+SAMPLE STATISTICS
+
+
+     ESTIMATED SAMPLE STATISTICS
+
+
+           Means
+              SIMILAR       INFO          VOCAB         MATRIX        ARITHMET
+              ________      ________      ________      ________      ________
+      1        13.052        13.041        13.701        12.062        12.000
+
+
+           Means
+              BLOCKS        VISPUZ        CODING        SYMBOL        FORWARD
+              ________      ________      ________      ________      ________
+      1        11.010        11.299        11.423        10.784         9.928
+
+
+           Means
+              BACKWARD      SEQUENCE      LTRNUM        IMATRIX       VRBREAS
+              ________      ________      ________      ________      ________
+      1        10.464        10.557         2.423         2.505         3.196
+
+
+           Means
+              ROTATE
+              ________
+      1         1.701
+
+
+           Covariances
+              SIMILAR       INFO          VOCAB         MATRIX        ARITHMET
+              ________      ________      ________      ________      ________
+ SIMILAR        9.059
+ INFO           1.647         5.153
+ VOCAB          2.469         3.198         5.715
+ MATRIX         1.688         1.657         0.895         7.192
+ ARITHMET       2.866         2.536         1.784         2.629         6.371
+ BLOCKS         1.700         1.577         0.756         2.463         2.485
+ VISPUZ         1.933         1.565         1.038         2.713         1.959
+ CODING         1.906         0.983         0.632         1.706         1.526
+ SYMBOL         1.269        -0.352         0.399         0.415         0.856
+ FORWARD        1.664         0.786         1.380         1.015         2.330
+ BACKWARD       1.120         1.331         1.551         1.095         2.629
+ SEQUENCE       2.394         1.224         2.105         2.244         2.649
+ LTRNUM         0.824         1.333         0.941         1.716         1.928
+ IMATRIX        0.830         0.732         0.687         0.938         1.103
+ VRBREAS        0.907         0.600         0.502         0.472         0.577
+ ROTATE         0.789         0.682         0.921         0.390         0.979
+
+
+           Covariances
+              BLOCKS        VISPUZ        CODING        SYMBOL        FORWARD
+              ________      ________      ________      ________      ________
+ BLOCKS         9.289
+ VISPUZ         4.729         6.643
+ CODING         1.398         1.771         8.636
+ SYMBOL         2.714         1.508         4.102         8.933
+ FORWARD        2.176         2.300         0.340         1.139        10.067
+ BACKWARD       1.748         1.841         1.227         1.812         4.570
+ SEQUENCE       0.829         1.535         1.899         1.203         3.432
+ LTRNUM         1.573         1.162         1.409         0.937         0.690
+ IMATRIX        1.170         1.468         0.766         0.460         0.737
+ VRBREAS        1.111         0.983         0.092         0.393         1.024
+ ROTATE         1.281         1.172         0.106         0.203         0.844
+
+
+           Covariances
+              BACKWARD      SEQUENCE      LTRNUM        IMATRIX       VRBREAS
+              ________      ________      ________      ________      ________
+ BACKWARD       7.403
+ SEQUENCE       2.917         8.865
+ LTRNUM         1.082         1.198         2.347
+ IMATRIX        0.704         0.863         0.828         1.693
+ VRBREAS        0.806         0.499         0.567         0.417         0.900
+ ROTATE         0.561         0.713         0.910         0.749         0.265
+
+
+           Covariances
+              ROTATE
+              ________
+ ROTATE         2.127
+
+
+           Correlations
+              SIMILAR       INFO          VOCAB         MATRIX        ARITHMET
+              ________      ________      ________      ________      ________
+ SIMILAR        1.000
+ INFO           0.241         1.000
+ VOCAB          0.343         0.589         1.000
+ MATRIX         0.209         0.272         0.140         1.000
+ ARITHMET       0.377         0.443         0.296         0.388         1.000
+ BLOCKS         0.185         0.228         0.104         0.301         0.323
+ VISPUZ         0.249         0.267         0.168         0.393         0.301
+ CODING         0.215         0.147         0.090         0.216         0.206
+ SYMBOL         0.141        -0.052         0.056         0.052         0.113
+ FORWARD        0.174         0.109         0.182         0.119         0.291
+ BACKWARD       0.137         0.216         0.238         0.150         0.383
+ SEQUENCE       0.267         0.181         0.296         0.281         0.353
+ LTRNUM         0.179         0.383         0.257         0.418         0.499
+ IMATRIX        0.212         0.248         0.221         0.269         0.336
+ VRBREAS        0.318         0.279         0.221         0.186         0.241
+ ROTATE         0.180         0.206         0.264         0.100         0.266
+
+
+           Correlations
+              BLOCKS        VISPUZ        CODING        SYMBOL        FORWARD
+              ________      ________      ________      ________      ________
+ BLOCKS         1.000
+ VISPUZ         0.602         1.000
+ CODING         0.156         0.234         1.000
+ SYMBOL         0.298         0.196         0.467         1.000
+ FORWARD        0.225         0.281         0.036         0.120         1.000
+ BACKWARD       0.211         0.262         0.153         0.223         0.529
+ SEQUENCE       0.091         0.200         0.217         0.135         0.363
+ LTRNUM         0.337         0.294         0.313         0.205         0.142
+ IMATRIX        0.295         0.438         0.200         0.118         0.179
+ VRBREAS        0.384         0.402         0.033         0.139         0.340
+ ROTATE         0.288         0.312         0.025         0.047         0.182
+
+
+           Correlations
+              BACKWARD      SEQUENCE      LTRNUM        IMATRIX       VRBREAS
+              ________      ________      ________      ________      ________
+ BACKWARD       1.000
+ SEQUENCE       0.360         1.000
+ LTRNUM         0.260         0.263         1.000
+ IMATRIX        0.199         0.223         0.415         1.000
+ VRBREAS        0.312         0.177         0.390         0.337         1.000
+ ROTATE         0.141         0.164         0.407         0.395         0.191
+
+
+           Correlations
+              ROTATE
+              ________
+ ROTATE         1.000
+
+
+     MAXIMUM LOG-LIKELIHOOD VALUE FOR THE UNRESTRICTED (H1) MODEL IS -3238.355
+
+
+UNIVARIATE SAMPLE STATISTICS
+
+
+     UNIVARIATE HIGHER-ORDER MOMENT DESCRIPTIVE STATISTICS
+
+         Variable/         Mean/     Skewness/   Minimum/ % with                Percentiles
+        Sample Size      Variance    Kurtosis    Maximum  Min/Max      20%/60%    40%/80%    Median
+
+     SIMILAR              13.052      -0.006       4.000    1.03%      11.000     12.000     13.000
+              97.000       9.059       0.107      19.000    5.15%      13.000     16.000
+     INFO                 13.041      -0.183       8.000    1.03%      11.000     13.000     14.000
+              97.000       5.153      -0.591      18.000    1.03%      14.000     15.000
+     VOCAB                13.701      -0.310       7.000    2.06%      12.000     13.000     14.000
+              97.000       5.715       0.144      19.000    2.06%      14.000     16.000
+     MATRIX               12.062      -0.666       4.000    1.03%      10.000     12.000     12.000
+              97.000       7.192       0.620      17.000    1.03%      13.000     14.000
+     ARITHMET             12.000      -0.596       5.000    3.09%      10.000     12.000     12.000
+              97.000       6.371       0.769      17.000    5.15%      13.000     14.000
+     BLOCKS               11.010       0.355       5.000    1.03%       8.000     10.000     11.000
+              97.000       9.289      -0.237      19.000    1.03%      12.000     13.000
+     VISPUZ               11.299       0.167       7.000    5.15%       9.000     10.000     11.000
+              97.000       6.643      -1.093      16.000    5.15%      12.000     14.000
+     CODING               11.423       0.521       5.000    1.03%       9.000     11.000     11.000
+              97.000       8.636       0.375      19.000    4.12%      12.000     13.000
+     SYMBOL               10.784       0.427       5.000    2.06%       8.000     10.000     11.000
+              97.000       8.933      -0.107      19.000    1.03%      11.000     13.000
+     FORWARD               9.928       0.467       3.000    1.03%       7.000      9.000      9.000
+              97.000      10.067      -0.087      18.000    3.09%      10.000     13.000
+     BACKWARD             10.464       0.759       6.000    1.03%       8.000      9.000     10.000
+              97.000       7.403      -0.345      17.000    2.06%      10.000     13.000
+     SEQUENCE             10.557       0.039       5.000    2.06%       7.000     10.000     11.000
+              97.000       8.865      -0.571      18.000    1.03%      11.000     13.000
+     LTRNUM                2.423      -0.439       0.000   18.56%       1.000      2.000      3.000
+              97.000       2.347      -1.330       4.000   36.08%       3.000      4.000
+     IMATRIX               2.505      -0.517       0.000   10.31%       1.000      2.000      3.000
+              97.000       1.693      -0.849       4.000   27.84%       3.000      4.000
+     VRBREAS               3.196      -1.196       0.000    1.03%       3.000      3.000      3.000
+              97.000       0.900       0.875       4.000   46.39%       4.000      4.000
+     ROTATE                1.701       0.288       0.000   29.90%       0.000      1.000      2.000
+              97.000       2.127      -1.270       4.000   17.53%       2.000      3.000
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       80
+
+Loglikelihood
+
+          H0 Value                       -3277.776
+          H1 Value                       -3238.355
+
+Information Criteria
+
+          Akaike (AIC)                    6715.552
+          Bayesian (BIC)                  6921.529
+          Sample-Size Adjusted BIC        6668.917
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             78.841
+          Degrees of Freedom                    72
+          P-Value                           0.2715
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.031
+          90 Percent C.I.                    0.000  0.068
+          Probability RMSEA <= .05           0.759
+
+CFI/TLI
+
+          CFI                                0.981
+          TLI                                0.969
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            488.609
+          Degrees of Freedom                   120
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.055
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ GC       BY
+    SIMILAR            1.000      0.000    999.000    999.000
+    INFO               1.321      0.410      3.220      0.001
+    VOCAB              1.309      0.372      3.520      0.000
+
+ GF       BY
+    MATRIX             1.000      0.000    999.000    999.000
+    ARITHMET           1.196      0.258      4.636      0.000
+
+ GV       BY
+    BLOCKS             1.000      0.000    999.000    999.000
+    VISPUZ             0.985      0.173      5.699      0.000
+
+ GS       BY
+    CODING             1.000      0.000    999.000    999.000
+    SYMBOL             0.709      0.282      2.512      0.012
+
+ GSM      BY
+    FORWARD            1.000      0.000    999.000    999.000
+    BACKWARD           0.894      0.176      5.076      0.000
+    SEQUENCE           0.722      0.179      4.023      0.000
+
+ LTRNUM   WITH
+    GC                 0.879      0.338      2.602      0.009
+    GF                 1.644      0.426      3.858      0.000
+    GV                 1.303      0.457      2.854      0.004
+    GS                 1.392      0.481      2.896      0.004
+    GSM                1.085      0.431      2.518      0.012
+
+ IMATRIX  WITH
+    GC                 0.566      0.263      2.154      0.031
+    GF                 0.927      0.306      3.030      0.002
+    GV                 1.390      0.383      3.630      0.000
+    GS                 0.743      0.391      1.899      0.058
+    GSM                0.835      0.367      2.273      0.023
+
+ VRBREAS  WITH
+    GC                 0.465      0.206      2.260      0.024
+    GF                 0.479      0.205      2.335      0.020
+    GV                 1.033      0.296      3.496      0.000
+    GS                 0.181      0.286      0.633      0.526
+    GSM                0.914      0.293      3.119      0.002
+
+ ROTATE   WITH
+    GC                 0.613      0.293      2.090      0.037
+    GF                 0.685      0.305      2.245      0.025
+    GV                 1.219      0.420      2.904      0.004
+    GS                 0.141      0.422      0.333      0.739
+    GSM                0.770      0.409      1.881      0.060
+
+ GF       WITH
+    GC                 1.357      0.525      2.583      0.010
+
+ GV       WITH
+    GC                 1.074      0.516      2.083      0.037
+    GF                 2.064      0.695      2.968      0.003
+
+ GS       WITH
+    GC                 0.622      0.526      1.181      0.238
+    GF                 1.307      0.646      2.025      0.043
+    GV                 1.866      0.785      2.377      0.017
+
+ GSM      WITH
+    GC                 1.183      0.560      2.113      0.035
+    GF                 2.079      0.645      3.226      0.001
+    GV                 2.105      0.776      2.714      0.007
+    GS                 1.396      0.788      1.773      0.076
+
+ LTRNUM   WITH
+    IMATRIX            0.828      0.219      3.777      0.000
+    VRBREAS            0.567      0.158      3.578      0.000
+    ROTATE             0.910      0.245      3.714      0.000
+
+ IMATRIX  WITH
+    VRBREAS            0.417      0.132      3.149      0.002
+    ROTATE             0.749      0.207      3.615      0.000
+
+ VRBREAS  WITH
+    ROTATE             0.265      0.143      1.851      0.064
+
+ Means
+    LTRNUM             2.423      0.156     15.575      0.000
+    IMATRIX            2.505      0.132     18.961      0.000
+    VRBREAS            3.196      0.096     33.182      0.000
+    ROTATE             1.701      0.148     11.487      0.000
+
+ Intercepts
+    SIMILAR           13.052      0.306     42.707      0.000
+    INFO              13.041      0.230     56.582      0.000
+    VOCAB             13.701      0.243     56.447      0.000
+    MATRIX            12.062      0.272     44.297      0.000
+    ARITHMET          12.000      0.256     46.823      0.000
+    BLOCKS            11.010      0.309     35.580      0.000
+    VISPUZ            11.299      0.262     43.177      0.000
+    CODING            11.423      0.298     38.283      0.000
+    SYMBOL            10.784      0.303     35.535      0.000
+    FORWARD            9.928      0.322     30.817      0.000
+    BACKWARD          10.464      0.276     37.876      0.000
+    SEQUENCE          10.557      0.302     34.919      0.000
+
+ Variances
+    LTRNUM             2.347      0.337      6.964      0.000
+    IMATRIX            1.693      0.243      6.964      0.000
+    VRBREAS            0.900      0.129      6.964      0.000
+    ROTATE             2.127      0.305      6.964      0.000
+    GC                 1.759      0.938      1.875      0.061
+    GF                 2.198      0.854      2.574      0.010
+    GV                 4.801      1.358      3.535      0.000
+    GS                 5.782      2.477      2.334      0.020
+    GSM                4.899      1.515      3.233      0.001
+
+ Residual Variances
+    SIMILAR            7.300      1.177      6.202      0.000
+    INFO               2.083      0.604      3.450      0.001
+    VOCAB              2.699      0.634      4.257      0.000
+    MATRIX             4.994      0.831      6.008      0.000
+    ARITHMET           3.227      0.759      4.251      0.000
+    BLOCKS             4.487      0.947      4.740      0.000
+    VISPUZ             1.985      0.731      2.717      0.007
+    CODING             2.854      2.221      1.285      0.199
+    SYMBOL             6.023      1.398      4.307      0.000
+    FORWARD            5.168      1.144      4.519      0.000
+    BACKWARD           3.488      0.827      4.217      0.000
+    SEQUENCE           6.314      1.072      5.889      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ GC       BY
+    SIMILAR            0.441      0.106      4.166      0.000
+    INFO               0.772      0.078      9.939      0.000
+    VOCAB              0.726      0.077      9.413      0.000
+
+ GF       BY
+    MATRIX             0.553      0.088      6.274      0.000
+    ARITHMET           0.703      0.085      8.305      0.000
+
+ GV       BY
+    BLOCKS             0.719      0.071     10.065      0.000
+    VISPUZ             0.837      0.068     12.376      0.000
+
+ GS       BY
+    CODING             0.818      0.158      5.176      0.000
+    SYMBOL             0.571      0.128      4.471      0.000
+
+ GSM      BY
+    FORWARD            0.698      0.081      8.615      0.000
+    BACKWARD           0.727      0.078      9.368      0.000
+    SEQUENCE           0.536      0.094      5.702      0.000
+
+ LTRNUM   WITH
+    GC                 0.432      0.101      4.268      0.000
+    GF                 0.724      0.097      7.477      0.000
+    GV                 0.388      0.104      3.734      0.000
+    GS                 0.378      0.113      3.333      0.001
+    GSM                0.320      0.112      2.847      0.004
+
+ IMATRIX  WITH
+    GC                 0.328      0.108      3.028      0.002
+    GF                 0.481      0.115      4.181      0.000
+    GV                 0.487      0.092      5.282      0.000
+    GS                 0.238      0.116      2.041      0.041
+    GSM                0.290      0.113      2.569      0.010
+
+ VRBREAS  WITH
+    GC                 0.369      0.107      3.463      0.001
+    GF                 0.341      0.123      2.763      0.006
+    GV                 0.497      0.094      5.312      0.000
+    GS                 0.079      0.130      0.613      0.540
+    GSM                0.436      0.102      4.263      0.000
+
+ ROTATE   WITH
+    GC                 0.317      0.110      2.889      0.004
+    GF                 0.317      0.125      2.546      0.011
+    GV                 0.381      0.102      3.733      0.000
+    GS                 0.040      0.121      0.332      0.740
+    GSM                0.238      0.115      2.067      0.039
+
+ GF       WITH
+    GC                 0.690      0.125      5.535      0.000
+
+ GV       WITH
+    GC                 0.370      0.124      2.989      0.003
+    GF                 0.635      0.130      4.897      0.000
+
+ GS       WITH
+    GC                 0.195      0.139      1.405      0.160
+    GF                 0.367      0.148      2.475      0.013
+    GV                 0.354      0.150      2.366      0.018
+
+ GSM      WITH
+    GC                 0.403      0.130      3.096      0.002
+    GF                 0.634      0.131      4.832      0.000
+    GV                 0.434      0.120      3.629      0.000
+    GS                 0.262      0.157      1.669      0.095
+
+ LTRNUM   WITH
+    IMATRIX            0.415      0.084      4.941      0.000
+    VRBREAS            0.390      0.086      4.529      0.000
+    ROTATE             0.407      0.085      4.808      0.000
+
+ IMATRIX  WITH
+    VRBREAS            0.337      0.090      3.751      0.000
+    ROTATE             0.395      0.086      4.604      0.000
+
+ VRBREAS  WITH
+    ROTATE             0.191      0.098      1.956      0.050
+
+ Means
+    LTRNUM             1.581      0.152     10.382      0.000
+    IMATRIX            1.925      0.172     11.225      0.000
+    VRBREAS            3.369      0.262     12.843      0.000
+    ROTATE             1.166      0.132      8.862      0.000
+
+ Intercepts
+    SIMILAR            4.336      0.327     13.242      0.000
+    INFO               5.745      0.425     13.525      0.000
+    VOCAB              5.731      0.424     13.523      0.000
+    MATRIX             4.498      0.339     13.287      0.000
+    ARITHMET           4.754      0.356     13.350      0.000
+    BLOCKS             3.613      0.279     12.970      0.000
+    VISPUZ             4.384      0.331     13.256      0.000
+    CODING             3.887      0.297     13.089      0.000
+    SYMBOL             3.608      0.278     12.968      0.000
+    FORWARD            3.129      0.247     12.692      0.000
+    BACKWARD           3.846      0.294     13.073      0.000
+    SEQUENCE           3.546      0.274     12.937      0.000
+
+ Variances
+    LTRNUM             1.000      0.000    999.000    999.000
+    IMATRIX            1.000      0.000    999.000    999.000
+    VRBREAS            1.000      0.000    999.000    999.000
+    ROTATE             1.000      0.000    999.000    999.000
+    GC                 1.000      0.000    999.000    999.000
+    GF                 1.000      0.000    999.000    999.000
+    GV                 1.000      0.000    999.000    999.000
+    GS                 1.000      0.000    999.000    999.000
+    GSM                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SIMILAR            0.806      0.093      8.642      0.000
+    INFO               0.404      0.120      3.372      0.001
+    VOCAB              0.472      0.112      4.214      0.000
+    MATRIX             0.694      0.097      7.127      0.000
+    ARITHMET           0.506      0.119      4.262      0.000
+    BLOCKS             0.483      0.103      4.703      0.000
+    VISPUZ             0.299      0.113      2.637      0.008
+    CODING             0.330      0.259      1.277      0.201
+    SYMBOL             0.674      0.146      4.626      0.000
+    FORWARD            0.513      0.113      4.544      0.000
+    BACKWARD           0.471      0.113      4.173      0.000
+    SEQUENCE           0.712      0.101      7.056      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ GC       BY
+    SIMILAR            0.441      0.106      4.166      0.000
+    INFO               0.772      0.078      9.939      0.000
+    VOCAB              0.726      0.077      9.413      0.000
+
+ GF       BY
+    MATRIX             0.553      0.088      6.274      0.000
+    ARITHMET           0.703      0.085      8.305      0.000
+
+ GV       BY
+    BLOCKS             0.719      0.071     10.065      0.000
+    VISPUZ             0.837      0.068     12.376      0.000
+
+ GS       BY
+    CODING             0.818      0.158      5.176      0.000
+    SYMBOL             0.571      0.128      4.471      0.000
+
+ GSM      BY
+    FORWARD            0.698      0.081      8.615      0.000
+    BACKWARD           0.727      0.078      9.368      0.000
+    SEQUENCE           0.536      0.094      5.702      0.000
+
+ LTRNUM   WITH
+    GC                 0.432      0.101      4.268      0.000
+    GF                 0.724      0.097      7.477      0.000
+    GV                 0.388      0.104      3.734      0.000
+    GS                 0.378      0.113      3.333      0.001
+    GSM                0.320      0.112      2.847      0.004
+
+ IMATRIX  WITH
+    GC                 0.328      0.108      3.028      0.002
+    GF                 0.481      0.115      4.181      0.000
+    GV                 0.487      0.092      5.282      0.000
+    GS                 0.238      0.116      2.041      0.041
+    GSM                0.290      0.113      2.569      0.010
+
+ VRBREAS  WITH
+    GC                 0.369      0.107      3.463      0.001
+    GF                 0.341      0.123      2.763      0.006
+    GV                 0.497      0.094      5.312      0.000
+    GS                 0.079      0.130      0.613      0.540
+    GSM                0.436      0.102      4.263      0.000
+
+ ROTATE   WITH
+    GC                 0.317      0.110      2.889      0.004
+    GF                 0.317      0.125      2.546      0.011
+    GV                 0.381      0.102      3.733      0.000
+    GS                 0.040      0.121      0.332      0.740
+    GSM                0.238      0.115      2.067      0.039
+
+ GF       WITH
+    GC                 0.690      0.125      5.535      0.000
+
+ GV       WITH
+    GC                 0.370      0.124      2.989      0.003
+    GF                 0.635      0.130      4.897      0.000
+
+ GS       WITH
+    GC                 0.195      0.139      1.405      0.160
+    GF                 0.367      0.148      2.475      0.013
+    GV                 0.354      0.150      2.366      0.018
+
+ GSM      WITH
+    GC                 0.403      0.130      3.096      0.002
+    GF                 0.634      0.131      4.832      0.000
+    GV                 0.434      0.120      3.629      0.000
+    GS                 0.262      0.157      1.669      0.095
+
+ LTRNUM   WITH
+    IMATRIX            0.415      0.084      4.941      0.000
+    VRBREAS            0.390      0.086      4.529      0.000
+    ROTATE             0.407      0.085      4.808      0.000
+
+ IMATRIX  WITH
+    VRBREAS            0.337      0.090      3.751      0.000
+    ROTATE             0.395      0.086      4.604      0.000
+
+ VRBREAS  WITH
+    ROTATE             0.191      0.098      1.956      0.050
+
+ Means
+    LTRNUM             1.581      0.152     10.382      0.000
+    IMATRIX            1.925      0.172     11.225      0.000
+    VRBREAS            3.369      0.262     12.843      0.000
+    ROTATE             1.166      0.132      8.862      0.000
+
+ Intercepts
+    SIMILAR            4.336      0.327     13.242      0.000
+    INFO               5.745      0.425     13.525      0.000
+    VOCAB              5.731      0.424     13.523      0.000
+    MATRIX             4.498      0.339     13.287      0.000
+    ARITHMET           4.754      0.356     13.350      0.000
+    BLOCKS             3.613      0.279     12.970      0.000
+    VISPUZ             4.384      0.331     13.256      0.000
+    CODING             3.887      0.297     13.089      0.000
+    SYMBOL             3.608      0.278     12.968      0.000
+    FORWARD            3.129      0.247     12.692      0.000
+    BACKWARD           3.846      0.294     13.073      0.000
+    SEQUENCE           3.546      0.274     12.937      0.000
+
+ Variances
+    LTRNUM             1.000      0.000    999.000    999.000
+    IMATRIX            1.000      0.000    999.000    999.000
+    VRBREAS            1.000      0.000    999.000    999.000
+    ROTATE             1.000      0.000    999.000    999.000
+    GC                 1.000      0.000    999.000    999.000
+    GF                 1.000      0.000    999.000    999.000
+    GV                 1.000      0.000    999.000    999.000
+    GS                 1.000      0.000    999.000    999.000
+    GSM                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SIMILAR            0.806      0.093      8.642      0.000
+    INFO               0.404      0.120      3.372      0.001
+    VOCAB              0.472      0.112      4.214      0.000
+    MATRIX             0.694      0.097      7.127      0.000
+    ARITHMET           0.506      0.119      4.262      0.000
+    BLOCKS             0.483      0.103      4.703      0.000
+    VISPUZ             0.299      0.113      2.637      0.008
+    CODING             0.330      0.259      1.277      0.201
+    SYMBOL             0.674      0.146      4.626      0.000
+    FORWARD            0.513      0.113      4.544      0.000
+    BACKWARD           0.471      0.113      4.173      0.000
+    SEQUENCE           0.712      0.101      7.056      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ GC       BY
+    SIMILAR            1.326      0.354      3.751      0.000
+    INFO               1.752      0.244      7.171      0.000
+    VOCAB              1.736      0.253      6.850      0.000
+
+ GF       BY
+    MATRIX             1.483      0.288      5.149      0.000
+    ARITHMET           1.773      0.280      6.340      0.000
+
+ GV       BY
+    BLOCKS             2.191      0.310      7.070      0.000
+    VISPUZ             2.158      0.262      8.230      0.000
+
+ GS       BY
+    CODING             2.405      0.515      4.668      0.000
+    SYMBOL             1.706      0.425      4.012      0.000
+
+ GSM      BY
+    FORWARD            2.213      0.342      6.466      0.000
+    BACKWARD           1.979      0.290      6.835      0.000
+    SEQUENCE           1.597      0.332      4.808      0.000
+
+ LTRNUM   WITH
+    GC                 0.663      0.173      3.823      0.000
+    GF                 1.109      0.185      5.981      0.000
+    GV                 0.595      0.174      3.417      0.001
+    GS                 0.579      0.187      3.100      0.002
+    GSM                0.490      0.182      2.694      0.007
+
+ IMATRIX  WITH
+    GC                 0.427      0.150      2.846      0.004
+    GF                 0.625      0.166      3.772      0.000
+    GV                 0.634      0.140      4.524      0.000
+    GS                 0.309      0.156      1.980      0.048
+    GSM                0.377      0.154      2.453      0.014
+
+ VRBREAS  WITH
+    GC                 0.350      0.109      3.203      0.001
+    GF                 0.323      0.123      2.624      0.009
+    GV                 0.472      0.104      4.548      0.000
+    GS                 0.075      0.123      0.611      0.541
+    GSM                0.413      0.108      3.820      0.000
+
+ ROTATE   WITH
+    GC                 0.462      0.169      2.729      0.006
+    GF                 0.462      0.190      2.434      0.015
+    GV                 0.556      0.163      3.415      0.001
+    GS                 0.058      0.176      0.331      0.740
+    GSM                0.348      0.173      2.005      0.045
+
+ GF       WITH
+    GC                 0.690      0.125      5.535      0.000
+
+ GV       WITH
+    GC                 0.370      0.124      2.989      0.003
+    GF                 0.635      0.130      4.897      0.000
+
+ GS       WITH
+    GC                 0.195      0.139      1.405      0.160
+    GF                 0.367      0.148      2.475      0.013
+    GV                 0.354      0.150      2.366      0.018
+
+ GSM      WITH
+    GC                 0.403      0.130      3.096      0.002
+    GF                 0.634      0.131      4.832      0.000
+    GV                 0.434      0.120      3.629      0.000
+    GS                 0.262      0.157      1.669      0.095
+
+ LTRNUM   WITH
+    IMATRIX            0.828      0.219      3.777      0.000
+    VRBREAS            0.567      0.158      3.578      0.000
+    ROTATE             0.910      0.245      3.714      0.000
+
+ IMATRIX  WITH
+    VRBREAS            0.417      0.132      3.149      0.002
+    ROTATE             0.749      0.207      3.615      0.000
+
+ VRBREAS  WITH
+    ROTATE             0.265      0.143      1.851      0.064
+
+ Means
+    LTRNUM             2.423      0.156     15.575      0.000
+    IMATRIX            2.505      0.132     18.961      0.000
+    VRBREAS            3.196      0.096     33.182      0.000
+    ROTATE             1.701      0.148     11.487      0.000
+
+ Intercepts
+    SIMILAR           13.052      0.306     42.707      0.000
+    INFO              13.041      0.230     56.582      0.000
+    VOCAB             13.701      0.243     56.447      0.000
+    MATRIX            12.062      0.272     44.297      0.000
+    ARITHMET          12.000      0.256     46.823      0.000
+    BLOCKS            11.010      0.309     35.580      0.000
+    VISPUZ            11.299      0.262     43.177      0.000
+    CODING            11.423      0.298     38.283      0.000
+    SYMBOL            10.784      0.303     35.535      0.000
+    FORWARD            9.928      0.322     30.817      0.000
+    BACKWARD          10.464      0.276     37.876      0.000
+    SEQUENCE          10.557      0.302     34.919      0.000
+
+ Variances
+    LTRNUM             2.347      0.337      6.964      0.000
+    IMATRIX            1.693      0.243      6.964      0.000
+    VRBREAS            0.900      0.129      6.964      0.000
+    ROTATE             2.127      0.305      6.964      0.000
+    GC                 1.000      0.000    999.000    999.000
+    GF                 1.000      0.000    999.000    999.000
+    GV                 1.000      0.000    999.000    999.000
+    GS                 1.000      0.000    999.000    999.000
+    GSM                1.000      0.000    999.000    999.000
+
+ Residual Variances
+    SIMILAR            7.300      1.177      6.202      0.000
+    INFO               2.083      0.604      3.450      0.001
+    VOCAB              2.699      0.634      4.257      0.000
+    MATRIX             4.994      0.831      6.008      0.000
+    ARITHMET           3.227      0.759      4.251      0.000
+    BLOCKS             4.487      0.947      4.740      0.000
+    VISPUZ             1.985      0.731      2.717      0.007
+    CODING             2.854      2.221      1.285      0.199
+    SYMBOL             6.023      1.398      4.307      0.000
+    FORWARD            5.168      1.144      4.519      0.000
+    BACKWARD           3.488      0.827      4.217      0.000
+    SEQUENCE           6.314      1.072      5.889      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    SIMILAR            0.194      0.093      2.083      0.037
+    INFO               0.596      0.120      4.969      0.000
+    VOCAB              0.528      0.112      4.706      0.000
+    MATRIX             0.306      0.097      3.137      0.002
+    ARITHMET           0.494      0.119      4.152      0.000
+    BLOCKS             0.517      0.103      5.033      0.000
+    VISPUZ             0.701      0.113      6.188      0.000
+    CODING             0.670      0.259      2.588      0.010
+    SYMBOL             0.326      0.146      2.235      0.025
+    FORWARD            0.487      0.113      4.308      0.000
+    BACKWARD           0.529      0.113      4.684      0.000
+    SEQUENCE           0.288      0.101      2.851      0.004
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.163E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+MODEL MODIFICATION INDICES
+
+NOTE:  Modification indices for direct effects of observed dependent variables
+regressed on covariates may not be included.  To include these, request
+MODINDICES (ALL).
+
+Minimum M.I. value for printing the modification index    10.000
+
+                                   M.I.     E.P.C.  Std E.P.C.  StdYX E.P.C.
+
+No modification indices above the minimum value.
+
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    \\cnsdisk.austin.utexas.edu\home\sry263\downloads\5 factor ml annotated.dgm
+
+     Beginning Time:  11:07:40
+        Ending Time:  11:07:42
+       Elapsed Time:  00:00:02
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2015 Muthen & Muthen
